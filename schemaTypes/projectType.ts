@@ -26,9 +26,9 @@ export const projectType = defineType({
       title: 'Тип проекта',
       options: {
         list: [
-          {title: 'Telegram Mini App', value: 'telegram-mini-app'},
-          {title: 'Web Site', value: 'web-site'},
-          {title: 'Web Application', value: 'web-application'},
+          {title: 'Telegram Mini App', value: '_telegram-mini-app'},
+          {title: 'Web Site', value: '_web-site'},
+          {title: 'Web Application', value: '_web-application'},
         ],
       },
       validation: (Rule) => Rule.required().error('Тип проекта обязателен'),
@@ -61,7 +61,6 @@ export const projectType = defineType({
       name: 'source',
       type: 'url',
       title: 'Ссылка на проект',
-      validation: (Rule) => Rule.required().error('Неверный формат URL'),
     }),
     defineField({
       name: 'prev_url',
