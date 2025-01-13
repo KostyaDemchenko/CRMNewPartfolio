@@ -61,6 +61,11 @@ export const projectType = defineType({
       name: 'source',
       type: 'url',
       title: 'Ссылка на проект',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https'],
+          allowRelative: false,
+        }).error('Некорректная ссылка'),
     }),
     defineField({
       name: 'prev_url',
