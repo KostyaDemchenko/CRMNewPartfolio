@@ -45,8 +45,14 @@ export const projectType = defineType({
         Rule.required().min(1).error('Необходимо выбрать хотя бы одну технологию'),
     }),
     defineField({
+      name: 'technologiesIcon',
+      type: 'string',
+      title: 'Технологии (иконка)',
+      description: 'Optional field for icon class name (e.g. from https://remixicon.com/)',
+    }),
+    defineField({
       name: 'date',
-      type: 'string', // Используем строку для формата "DD.MM.YYYY"
+      type: 'string',
       title: 'Дата',
       validation: (Rule) => Rule.required().error('Дата обязателена'),
     }),
