@@ -33,23 +33,37 @@ export const projectType = defineType({
       },
       validation: (Rule) => Rule.required().error('Тип проекта обязателен'),
     }),
+
+    // Updated: "technologies" as an array of objects
     defineField({
       name: 'technologies',
       type: 'array',
       title: 'Технологии',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags',
-      },
+      of: [
+        defineField({
+          name: 'techItem',
+          type: 'object',
+          title: 'Technology Item',
+          fields: [
+            {
+              name: 'name',
+              type: 'string',
+              title: 'Technology Name',
+              validation: (Rule) => Rule.required().error('Technology name is required'),
+            },
+            {
+              name: 'icon',
+              type: 'string',
+              title: 'Icon Class',
+              description: 'Optional icon class name (e.g. from https://remixicon.com/)',
+            },
+          ],
+        }),
+      ],
       validation: (Rule) =>
-        Rule.required().min(1).error('Необходимо выбрать хотя бы одну технологию'),
+        Rule.required().min(1).error('Необходимо добавить хотя бы одну технологию'),
     }),
-    defineField({
-      name: 'technologiesIcon',
-      type: 'string',
-      title: 'Технологии (иконка)',
-      description: 'Optional field for icon class name (e.g. from https://remixicon.com/)',
-    }),
+
     defineField({
       name: 'date',
       type: 'string',
